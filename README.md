@@ -1,11 +1,16 @@
-# Smart Project Tracker
+# 📋 Smart Project Tracker
 
-A simple Python project to manage tasks.
+A simple Python project to manage daily project tasks.
 
 ## Features
 - Add Task
 - View Tasks
 - Exit
+
+## Technologies Used
+- Python
+- Git
+- GitHub
 
 ## How to Run
 
@@ -26,16 +31,18 @@ Enter your choice: 1
 Enter task: Learn Python
 Task added successfully!
 
-Enter your choice: 1
-Enter task: Build Portfolio
-Task added successfully!
-
 Enter your choice: 2
 
 Your Tasks:
 - Learn Python
-- Build Portfolio
-
-Enter your choice: 3
-Thank you!
 ```
+
+## Project Roadmap
+
+- ✅ Day 1: Add & View Tasks
+- ⬜ Day 2: Delete Task
+- ⬜ Day 3: Mark Task as Completed
+- ⬜ Day 4: Show Progress
+- ⬜ Day 5: Add Priority
+- ⬜ Day 6: Save Tasks in JSON
+- ⬜ Day 7: AI Suggestions
