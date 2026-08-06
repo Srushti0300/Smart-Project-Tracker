@@ -38,11 +38,12 @@ Your Tasks:
 ```
 
 ## Project Roadmap
+## Project Progress
 
-- ✅ Day 1: Add & View Tasks
-- ⬜ Day 2: Delete Task
-- ⬜ Day 3: Mark Task as Completed
-- ⬜ Day 4: Show Progress
-- ⬜ Day 5: Add Priority
-- ⬜ Day 6: Save Tasks in JSON
-- ⬜ Day 7: AI Suggestions
+- ✅ Day 1 - Add & View Tasks
+- ✅ Day 2 - Delete Tasks
+- ⬜ Day 3 - Mark Task as Completed
+- ⬜ Day 4 - Show Progress
+- ⬜ Day 5 - Task Priority
+- ⬜ Day 6 - Save Tasks in JSON
+- ⬜ Day 7 - AI Task Suggestions
