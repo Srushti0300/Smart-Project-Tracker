@@ -6,20 +6,24 @@ while True:
     print("2. View Tasks")
     print("3. Complete Task")
     print("4. Delete Task")
-    print("5. Exit")
+    print("5. Show Progress")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
     if choice == "1":
         task = input("Enter task: ")
+
         tasks.append({
             "name": task,
             "status": "Pending"
         })
+
         print("✅ Task added successfully!")
 
     elif choice == "2":
         print("\n📋 Your Tasks:")
+
         if len(tasks) == 0:
             print("No tasks available.")
         else:
@@ -30,7 +34,6 @@ while True:
         if len(tasks) == 0:
             print("No tasks available.")
         else:
-            print("\n📋 Your Tasks:")
             for i, task in enumerate(tasks, start=1):
                 print(f"{i}. {task['name']} - {task['status']}")
 
@@ -38,7 +41,7 @@ while True:
 
             if 1 <= number <= len(tasks):
                 tasks[number - 1]["status"] = "Completed"
-                print("✅ Task marked as completed!")
+                print("✅ Task completed!")
             else:
                 print("❌ Invalid task number.")
 
@@ -46,21 +49,36 @@ while True:
         if len(tasks) == 0:
             print("No tasks available.")
         else:
-            print("\n📋 Your Tasks:")
             for i, task in enumerate(tasks, start=1):
                 print(f"{i}. {task['name']} - {task['status']}")
 
-            delete = int(input("Enter task number to delete: "))
+            number = int(input("Enter task number to delete: "))
 
-            if 1 <= delete <= len(tasks):
-                removed = tasks.pop(delete - 1)
-                print(f"✅ '{removed['name']}' deleted successfully!")
+            if 1 <= number <= len(tasks):
+                removed = tasks.pop(number - 1)
+                print(f"✅ '{removed['name']}' deleted!")
             else:
                 print("❌ Invalid task number.")
 
     elif choice == "5":
-        print("👋 Thank you for using Smart Project Tracker!")
+        total = len(tasks)
+        completed = sum(1 for task in tasks if task["status"] == "Completed")
+        pending = total - completed
+
+        print("\n📊 Project Progress")
+        print("Total Tasks:", total)
+        print("Completed:", completed)
+        print("Pending:", pending)
+
+        if total > 0:
+            progress = (completed / total) * 100
+            print("Progress:", round(progress, 1), "%")
+        else:
+            print("Progress: 0%")
+
+    elif choice == "6":
+        print("👋 Thank you!")
         break
 
     else:
-        print("❌ Invalid choice! Please try again.")
+        print("❌ Invalid choice!")
