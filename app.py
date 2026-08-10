@@ -14,9 +14,27 @@ while True:
     if choice == "1":
         task = input("Enter task: ")
 
+        print("\nSelect Priority:")
+        print("1. High")
+        print("2. Medium")
+        print("3. Low")
+
+        priority_choice = input("Enter priority: ")
+
+        if priority_choice == "1":
+            priority = "High"
+        elif priority_choice == "2":
+            priority = "Medium"
+        elif priority_choice == "3":
+            priority = "Low"
+        else:
+            print("Invalid priority. Setting to Medium.")
+            priority = "Medium"
+
         tasks.append({
             "name": task,
-            "status": "Pending"
+            "status": "Pending",
+            "priority": priority
         })
 
         print("✅ Task added successfully!")
@@ -28,7 +46,11 @@ while True:
             print("No tasks available.")
         else:
             for i, task in enumerate(tasks, start=1):
-                print(f"{i}. {task['name']} - {task['status']}")
+                print(
+                    f"{i}. {task['name']} | "
+                    f"Priority: {task['priority']} | "
+                    f"Status: {task['status']}"
+                )
 
     elif choice == "3":
         if len(tasks) == 0:
@@ -50,7 +72,7 @@ while True:
             print("No tasks available.")
         else:
             for i, task in enumerate(tasks, start=1):
-                print(f"{i}. {task['name']} - {task['status']}")
+                print(f"{i}. {task['name']}")
 
             number = int(input("Enter task number to delete: "))
 
@@ -62,7 +84,11 @@ while True:
 
     elif choice == "5":
         total = len(tasks)
-        completed = sum(1 for task in tasks if task["status"] == "Completed")
+        completed = sum(
+            1 for task in tasks
+            if task["status"] == "Completed"
+        )
+
         pending = total - completed
 
         print("\n📊 Project Progress")
@@ -77,7 +103,7 @@ while True:
             print("Progress: 0%")
 
     elif choice == "6":
-        print("👋 Thank you!")
+        print("👋 Thank you for using Smart Project Tracker!")
         break
 
     else:
