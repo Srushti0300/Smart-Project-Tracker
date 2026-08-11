@@ -1,6 +1,6 @@
 # 📋 Smart Project Tracker
 
-A simple Python-based project management tool to manage and track tasks.
+A simple Python-based project management tool for managing and tracking tasks.
 
 ## 🚀 Features
 
@@ -9,11 +9,14 @@ A simple Python-based project management tool to manage and track tasks.
 - Delete tasks
 - Mark tasks as completed
 - Track project progress
-- Show completed and pending tasks
+- Set task priority
+- Save tasks using JSON
+- Load saved tasks when the program starts
 
 ## 🛠️ Technologies
 
 - Python
+- JSON
 - Git
 - GitHub
 
@@ -35,11 +38,22 @@ python app.py
 5. Show Progress
 6. Exit
 
-📊 Project Progress
-Total Tasks: 4
-Completed: 2
-Pending: 2
-Progress: 50.0%
+📋 Your Tasks:
+
+1. Complete Portfolio | Priority: High | Status: Pending
+2. Learn Python | Priority: Medium | Status: Completed
+
+💾 Tasks saved successfully!
+```
+
+## 📁 Project Structure
+
+```text
+Smart-Project-Tracker/
+│
+├── app.py
+├── tasks.json
+└── README.md
 ```
 
 ## 📈 Project Progress
@@ -48,6 +62,6 @@ Progress: 50.0%
 - ✅ Day 2 - Delete Tasks
 - ✅ Day 3 - Complete Tasks
 - ✅ Day 4 - Progress Tracking
-- ⬜ Day 5 - Task Priority
-- ⬜ Day 6 - Save Tasks
-- ⬜ Day 7 - AI Suggestions
+- ✅ Day 5 - Task Priority
+- ✅ Day 6 - Save Tasks with JSON
+- ⬜ Day 7 - AI Task Suggestions

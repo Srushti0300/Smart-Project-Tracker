@@ -1,4 +1,11 @@
-tasks = []
+import json
+
+try:
+    with open("tasks.json", "r") as file:
+        tasks = json.load(file)
+except FileNotFoundError:
+    tasks = []
+
 
 while True:
     print("\n===== Smart Project Tracker =====")
@@ -28,7 +35,6 @@ while True:
         elif priority_choice == "3":
             priority = "Low"
         else:
-            print("Invalid priority. Setting to Medium.")
             priority = "Medium"
 
         tasks.append({
@@ -103,7 +109,11 @@ while True:
             print("Progress: 0%")
 
     elif choice == "6":
-        print("👋 Thank you for using Smart Project Tracker!")
+        with open("tasks.json", "w") as file:
+            json.dump(tasks, file, indent=4)
+
+        print("💾 Tasks saved successfully!")
+        print("👋 Thank you!")
         break
 
     else:
