@@ -14,7 +14,8 @@ while True:
     print("3. Complete Task")
     print("4. Delete Task")
     print("5. Show Progress")
-    print("6. Exit")
+    print("6. Smart Task Suggestion")
+    print("7. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -48,7 +49,7 @@ while True:
     elif choice == "2":
         print("\n📋 Your Tasks:")
 
-        if len(tasks) == 0:
+        if not tasks:
             print("No tasks available.")
         else:
             for i, task in enumerate(tasks, start=1):
@@ -59,7 +60,7 @@ while True:
                 )
 
     elif choice == "3":
-        if len(tasks) == 0:
+        if not tasks:
             print("No tasks available.")
         else:
             for i, task in enumerate(tasks, start=1):
@@ -74,7 +75,7 @@ while True:
                 print("❌ Invalid task number.")
 
     elif choice == "4":
-        if len(tasks) == 0:
+        if not tasks:
             print("No tasks available.")
         else:
             for i, task in enumerate(tasks, start=1):
@@ -94,7 +95,6 @@ while True:
             1 for task in tasks
             if task["status"] == "Completed"
         )
-
         pending = total - completed
 
         print("\n📊 Project Progress")
@@ -109,11 +109,38 @@ while True:
             print("Progress: 0%")
 
     elif choice == "6":
+        pending_tasks = [
+            task for task in tasks
+            if task["status"] == "Pending"
+        ]
+
+        if not pending_tasks:
+            print("🎉 No pending tasks!")
+        else:
+            high = [task for task in pending_tasks
+                    if task["priority"] == "High"]
+
+            medium = [task for task in pending_tasks
+                      if task["priority"] == "Medium"]
+
+            if high:
+                suggestion = high[0]
+            elif medium:
+                suggestion = medium[0]
+            else:
+                suggestion = pending_tasks[0]
+
+            print("\n🤖 Smart Suggestion")
+            print("You should work on:")
+            print("Task:", suggestion["name"])
+            print("Priority:", suggestion["priority"])
+
+    elif choice == "7":
         with open("tasks.json", "w") as file:
             json.dump(tasks, file, indent=4)
 
         print("💾 Tasks saved successfully!")
-        print("👋 Thank you!")
+        print("👋 Thank you for using Smart Project Tracker!")
         break
 
     else:

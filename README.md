@@ -63,5 +63,5 @@ Smart-Project-Tracker/
 - ✅ Day 3 - Complete Tasks
 - ✅ Day 4 - Progress Tracking
 - ✅ Day 5 - Task Priority
-- ✅ Day 6 - Save Tasks with JSON
-- ⬜ Day 7 - AI Task Suggestions
+- ✅ Day 6 - JSON Data Storage
+- ✅ Day 7 - Smart Task Suggestions

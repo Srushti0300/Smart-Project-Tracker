@@ -1,7 +1,22 @@
 [
     {
-        "name": "python lectures",
+        "name": "Create Portfolio",
+        "status": "Completed",
+        "priority": "High"
+    },
+    {
+        "name": "learn java",
+        "status": "Pending",
+        "priority": "Low"
+    },
+    {
+        "name": "learn python",
         "status": "Pending",
         "priority": "Medium"
+    },
+    {
+        "name": "create portfolio",
+        "status": "Pending",
+        "priority": "High"
     }
 ]
