@@ -6,7 +6,6 @@ try:
 except FileNotFoundError:
     tasks = []
 
-
 while True:
     print("\n===== Smart Project Tracker =====")
     print("1. Add Task")
@@ -44,10 +43,10 @@ while True:
             "priority": priority
         })
 
-        print("✅ Task added successfully!")
+        print("Task added successfully!")
 
     elif choice == "2":
-        print("\n📋 Your Tasks:")
+        print("\nYour Tasks:")
 
         if not tasks:
             print("No tasks available.")
@@ -59,6 +58,8 @@ while True:
                     f"Status: {task['status']}"
                 )
 
+            print("\nTotal Tasks:", len(tasks))
+
     elif choice == "3":
         if not tasks:
             print("No tasks available.")
@@ -66,13 +67,17 @@ while True:
             for i, task in enumerate(tasks, start=1):
                 print(f"{i}. {task['name']} - {task['status']}")
 
-            number = int(input("Enter task number to complete: "))
+            try:
+                number = int(input("Enter task number to complete: "))
 
-            if 1 <= number <= len(tasks):
-                tasks[number - 1]["status"] = "Completed"
-                print("✅ Task completed!")
-            else:
-                print("❌ Invalid task number.")
+                if 1 <= number <= len(tasks):
+                    tasks[number - 1]["status"] = "Completed"
+                    print("Task completed!")
+                else:
+                    print("Invalid task number.")
+
+            except ValueError:
+                print("Please enter a number.")
 
     elif choice == "4":
         if not tasks:
@@ -81,23 +86,29 @@ while True:
             for i, task in enumerate(tasks, start=1):
                 print(f"{i}. {task['name']}")
 
-            number = int(input("Enter task number to delete: "))
+            try:
+                number = int(input("Enter task number to delete: "))
 
-            if 1 <= number <= len(tasks):
-                removed = tasks.pop(number - 1)
-                print(f"✅ '{removed['name']}' deleted!")
-            else:
-                print("❌ Invalid task number.")
+                if 1 <= number <= len(tasks):
+                    removed = tasks.pop(number - 1)
+                    print(f"'{removed['name']}' deleted!")
+                else:
+                    print("Invalid task number.")
+
+            except ValueError:
+                print("Please enter a number.")
 
     elif choice == "5":
         total = len(tasks)
+
         completed = sum(
             1 for task in tasks
             if task["status"] == "Completed"
         )
+
         pending = total - completed
 
-        print("\n📊 Project Progress")
+        print("\n===== Project Progress =====")
         print("Total Tasks:", total)
         print("Completed:", completed)
         print("Pending:", pending)
@@ -115,33 +126,36 @@ while True:
         ]
 
         if not pending_tasks:
-            print("🎉 No pending tasks!")
+            print("No pending tasks!")
         else:
-            high = [task for task in pending_tasks
-                    if task["priority"] == "High"]
+            high_tasks = [
+                task for task in pending_tasks
+                if task["priority"] == "High"
+            ]
 
-            medium = [task for task in pending_tasks
-                      if task["priority"] == "Medium"]
+            medium_tasks = [
+                task for task in pending_tasks
+                if task["priority"] == "Medium"
+            ]
 
-            if high:
-                suggestion = high[0]
-            elif medium:
-                suggestion = medium[0]
+            if high_tasks:
+                suggestion = high_tasks[0]
+            elif medium_tasks:
+                suggestion = medium_tasks[0]
             else:
                 suggestion = pending_tasks[0]
 
-            print("\n🤖 Smart Suggestion")
-            print("You should work on:")
-            print("Task:", suggestion["name"])
+            print("\n===== Smart Suggestion =====")
+            print("Recommended Task:", suggestion["name"])
             print("Priority:", suggestion["priority"])
 
     elif choice == "7":
         with open("tasks.json", "w") as file:
             json.dump(tasks, file, indent=4)
 
-        print("💾 Tasks saved successfully!")
-        print("👋 Thank you for using Smart Project Tracker!")
+        print("Tasks saved successfully!")
+        print("Thank you for using Smart Project Tracker!")
         break
 
     else:
-        print("❌ Invalid choice!")
+        print("Invalid choice!")
